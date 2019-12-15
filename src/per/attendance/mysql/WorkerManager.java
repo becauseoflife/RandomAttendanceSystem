@@ -1,6 +1,7 @@
-package per.attendance.main;
+package per.attendance.mysql;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -68,6 +69,7 @@ public class WorkerManager extends DBConnection {
 		return list;
 	}
 	
+	// 返回记录表中是否通过
 	public String getRecord(String tableName ,String Wno) throws SQLException
 	{
 		Statement statement = null;
@@ -94,4 +96,69 @@ public class WorkerManager extends DBConnection {
 		return record;
 	}
 	
+	// 返回所有记录表的表名
+	public String getRecordTableName() throws SQLException
+	{
+		String tableName = "";
+		ResultSet rs = null;
+		DatabaseMetaData data = null;
+		try {
+			data = conn.getMetaData();
+			rs = data.getTables("workers", "%", "%",new String[]{"TABLE"}); 
+			String name = "";
+			while(rs.next())
+			{
+				name = rs.getString("TABLE_NAME");
+				if (!name.equals("workers")) {
+					tableName += name + "\n"; 
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		} finally{
+			if (rs != null) {
+				rs.close();
+			}
+			closeConnection();
+		}
+		
+		return tableName;
+	}
+	
+	// 对记录表进行查询操作，并已List结构返回结果， 并及时关闭数据库
+	public Object[][] getRecordContent(String Sql) throws SQLException
+	{
+		Object[][] recordContent = null;
+		Statement statement = null;
+		ResultSet rs = null;
+		try {
+			statement = conn.createStatement();
+			rs = statement.executeQuery(Sql);
+			rs.last();		// 获取总行数
+			int allRow = rs.getRow();
+			recordContent = new Object[allRow][3];
+			int row = 0;
+			rs.beforeFirst();
+			while(rs.next()){
+				recordContent[row][0] = rs.getString("Wno");
+				recordContent[row][1] = rs.getString("Wname");
+				recordContent[row][2] = rs.getString("Wrecord");
+				row++;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		} finally {
+			if (statement != null) {
+				statement.close();
+			}
+			if (rs != null) {
+				rs.close();
+			}
+			closeConnection();
+		}
+		
+		return recordContent;
+	}
 }

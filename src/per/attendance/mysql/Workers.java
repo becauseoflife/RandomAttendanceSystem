@@ -1,4 +1,4 @@
-package per.attendance.main;
+package per.attendance.mysql;
 
 public class Workers {
 	private String Wno;				// ¹¤ºÅ

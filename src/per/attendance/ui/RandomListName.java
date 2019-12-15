@@ -1,4 +1,4 @@
-package per.attendance.main;
+package per.attendance.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -31,6 +31,9 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.WebServiceException;
+
+import per.attendance.mysql.WorkerManager;
+import per.attendance.mysql.Workers;
 
 public class RandomListName{
 	private JPanel listNameJPanel;		// 存放生成的UI界面

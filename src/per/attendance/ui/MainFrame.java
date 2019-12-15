@@ -1,4 +1,4 @@
-package per.attendance.main;
+package per.attendance.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -31,7 +31,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		JPanel contentPanel = (JPanel) getContentPane();
 		contentPanel.setLayout( new BorderLayout());
 		//框架的大小和其标题
-		setSize(new Dimension(800,490));
+		setSize(new Dimension(800,560));
 		setTitle("随机考勤系统");
 		//添加菜单条
 		setJMenuBar(jMenuBar);
@@ -77,7 +77,10 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 		// 查看点名记录
 		if (e.getSource() == jMenuItemCheckRecords) {
-			
+			this.remove(this.getContentPane());
+			AttendanceRecord attendanceRecord = new AttendanceRecord();
+			this.setContentPane(attendanceRecord.showRecords());
+			this.setVisible(true);
 		}
 		// 添加员工
 		if (e.getSource() == jMenuItemAddWorker) {

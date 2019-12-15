@@ -8,6 +8,9 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
+import per.attendance.mysql.DBConnection;
+import per.attendance.ui.MainFrame;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -46,7 +49,7 @@ public class Main {
 			String sqlQuery = "select * from workers";
 			
 			DatabaseMetaData data  = conn.getMetaData(); 
-			ResultSet tableRet = data.getTables("spj", "spj", "%",new String[]{"TABLE"}); 
+			ResultSet tableRet = data.getTables("workers", "%", "%",new String[]{"TABLE"}); 
 			while(tableRet.next()){
 				System.out.println(tableRet.getString("TABLE_NAME"));
 			}

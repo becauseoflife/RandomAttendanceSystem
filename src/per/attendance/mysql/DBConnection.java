@@ -1,4 +1,4 @@
-package per.attendance.main;
+package per.attendance.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
