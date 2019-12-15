@@ -35,13 +35,11 @@ import javax.xml.ws.WebServiceException;
 public class RandomListName{
 	private JPanel listNameJPanel;		// 存放生成的UI界面
 	private List<Workers> workersList;	// 存放员工列表
-	private List<Workers> randomList;	// 存放随机生产的考勤名单列表
 	private String[] columnName;		// 点名表上的列信息
 
 	public RandomListName(){ 
 		listNameJPanel = new JPanel();
 		columnName = new String[]{"工号", "姓名", "部门", "考勤"};
-		randomList = new ArrayList<Workers>();
 		try {
 			WorkerManager workerManager = new WorkerManager();
 			String sql = "select Wno, Wname, Wdepartment, Wleader, Wrecords, Wkeeprds, Wtotalrds from workers";
