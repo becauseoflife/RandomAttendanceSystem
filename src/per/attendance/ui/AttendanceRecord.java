@@ -54,7 +54,6 @@ public class AttendanceRecord {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				System.out.println(recoredBox.getSelectedItem());
 				try {
 					recordJPanel.setVisible(false);
 					tableJPanel.setVisible(false);
@@ -83,7 +82,7 @@ public class AttendanceRecord {
 	{
 		WorkerManager selectManager = new WorkerManager();
 		String selectSql = "select * from `" + tableName + "`";
-		System.out.println(selectSql);
+		//System.out.println(selectSql);
 		Object[][] data = selectManager.getRecordContent(selectSql);
 		
 		String[] columnNames = {"工号", "姓名", "记录"};

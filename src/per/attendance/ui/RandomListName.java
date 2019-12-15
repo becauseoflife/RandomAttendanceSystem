@@ -223,7 +223,6 @@ public class RandomListName{
 	// 保存考勤记录
 	protected void saveRecords(String tableName, JTable table) throws SQLException {
 		// TODO 自动生成的方法存根
-		System.out.println(table.getValueAt(0, columnName.length-1));
 		// 创建记录表
 		String tabelSql = "CREATE TABLE `" + tableName +"` ("
 				+ "`Wno` CHAR(8) NOT NULL,"

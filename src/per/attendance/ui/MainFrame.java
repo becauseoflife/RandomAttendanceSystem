@@ -84,7 +84,10 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 		// 添加员工
 		if (e.getSource() == jMenuItemAddWorker) {
-			
+			AddWorkerPanel add = new AddWorkerPanel();
+			this.remove(this.getContentPane());
+			this.setContentPane(add);
+			this.setVisible(true);
 		}
 		// 删除员工
 		if (e.getSource() == jMenuItemDeleteWorker) {
