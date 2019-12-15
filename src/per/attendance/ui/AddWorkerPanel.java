@@ -29,15 +29,15 @@ public class AddWorkerPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				String fielValues[] = userInterface.getFieldValues();
+				String fieldValues[] = userInterface.getFieldValues();
 				// 主码非空
-				if (!fielValues[WorkerUI.WNO].equals("") && !fielValues[WorkerUI.WNAME].equals("") && !fielValues[WorkerUI.WDEPARTMENT].equals("")) {
+				if (!fieldValues[WorkerUI.WNO].equals("") && !fieldValues[WorkerUI.WNAME].equals("") && !fieldValues[WorkerUI.WDEPARTMENT].equals("")) {
 					try {
 						String sqlString = "INSERT INTO `workers` VALUE ('" +
-								fielValues[WorkerUI.WNO] + "','" +
-								fielValues[WorkerUI.WNAME] + "','" +
-								fielValues[WorkerUI.WDEPARTMENT] + "','" +
-								fielValues[WorkerUI.WLEADER] + "'," +
+								fieldValues[WorkerUI.WNO] + "','" +
+								fieldValues[WorkerUI.WNAME] + "','" +
+								fieldValues[WorkerUI.WDEPARTMENT] + "','" +
+								fieldValues[WorkerUI.WLEADER] + "'," +
 								 "0,0,0)";
 						//System.out.println(sqlString);
 						WorkerManager insertManager = new WorkerManager();
