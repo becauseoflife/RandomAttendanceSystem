@@ -126,7 +126,7 @@ public class WorkerManager extends DBConnection {
 		return tableName;
 	}
 	
-	// 对记录表进行查询操作，并已List结构返回结果， 并及时关闭数据库
+	// 对记录表进行查询操作，并已Object结构返回结果， 并及时关闭数据库
 	public Object[][] getRecordContent(String Sql) throws SQLException
 	{
 		Object[][] recordContent = null;
@@ -160,5 +160,45 @@ public class WorkerManager extends DBConnection {
 		}
 		
 		return recordContent;
+	}
+	
+	// 对员工表表进行查询操作，并已Object结构返回结果， 并及时关闭数据库
+	public Object[][] getAllWorkers(String Sql) throws SQLException
+	{
+		Object[][] allWorkers = null;
+		Statement statement = null;
+		ResultSet rs = null;
+		try {
+			statement = conn.createStatement();
+			rs = statement.executeQuery(Sql);
+			rs.last();		// 获取总行数
+			int allRow = rs.getRow();
+			allWorkers = new Object[allRow][7];
+			int row = 0;
+			rs.beforeFirst();
+			while(rs.next()){
+				allWorkers[row][0] = rs.getString("Wno");
+				allWorkers[row][1] = rs.getString("Wname");
+				allWorkers[row][2] = rs.getString("Wdepartment");
+				allWorkers[row][3] = rs.getString("Wleader");
+				allWorkers[row][4] = rs.getInt("Wrecords");
+				allWorkers[row][5] = rs.getInt("Wkeeprds");
+				allWorkers[row][6] = rs.getInt("Wtotalrds");
+				row++;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		} finally {
+			if (statement != null) {
+				statement.close();
+			}
+			if (rs != null) {
+				rs.close();
+			}
+			closeConnection();
+		}
+		
+		return allWorkers;
 	}
 }

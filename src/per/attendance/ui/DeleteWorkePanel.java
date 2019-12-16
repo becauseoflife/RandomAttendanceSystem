@@ -97,14 +97,14 @@ public class DeleteWorkePanel extends JPanel {
 				if (result != 0) {
 					JOptionPane.showMessageDialog(null, "删除成功！");
 				}else {
-					JOptionPane.showMessageDialog(null, "请检查输入工号是否正确！");
+					JOptionPane.showMessageDialog(null, "请检查输入工号是否存在！");
 				}
 				
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}else {
-			JOptionPane.showMessageDialog(null, "检查输入工号是否正确！");
+			JOptionPane.showMessageDialog(null, "请检查输入工号是否存在！");
 		}
 	}
 

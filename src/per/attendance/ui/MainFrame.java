@@ -105,7 +105,10 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 		// 浏览全部员工
 		if (e.getSource() == jMenuItemAllWokers) {
-			
+			ListWorkerPanel allWorker = new ListWorkerPanel();
+			this.remove(this.getContentPane());
+			this.setContentPane(allWorker);
+			this.setVisible(true);
 		}
 	}
 	
