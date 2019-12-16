@@ -91,7 +91,10 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 		// 删除员工
 		if (e.getSource() == jMenuItemDeleteWorker) {
-			
+			DeleteWorkePanel delete = new DeleteWorkePanel();
+			this.remove(this.getContentPane());
+			this.setContentPane(delete);
+			this.setVisible(true);
 		}
 		// 修改员工
 		if (e.getSource() == jMenuItemUpdateWorker) {
