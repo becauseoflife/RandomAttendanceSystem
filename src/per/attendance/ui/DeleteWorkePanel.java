@@ -22,7 +22,7 @@ public class DeleteWorkePanel extends JPanel {
 	public DeleteWorkePanel()
 	{
 		// 修改条件
-		String[] name1 = {"请输入要删除的学生的工号："};
+		String[] name1 = {"请输入要删除的员工的工号："};
 		userInterface1 = new WorkerUI(name1);
 		// 显示要修改的记录界面
 		String[] name2 = {"工	 号", "姓 名", "部 门", "部门 领导"};

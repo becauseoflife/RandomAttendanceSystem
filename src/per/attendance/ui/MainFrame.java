@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class MainFrame extends JFrame implements ActionListener {
 	//初始化主菜单
 	JMenuBar jMenuBar= new JMenuBar();
-	JMenu JMenuFile = new JMenu("菜单");
+	JMenu JMenuFile = new JMenu("退出");
 	JMenuItem jMenuFileExit = new JMenuItem("退出系统");
 	JMenu jMenuListName = new JMenu("员工考勤");
 	JMenuItem jMenuItemListName = new JMenuItem("生成考勤名单");
